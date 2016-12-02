@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+
+  postgres:
+    container_name: postgres_sylius
+    build: postgres/
+    image: postgres
+
+
+  nginx:
+    container_name: nginx_sylius
+    build: nginx/
+    ports:
+     - "8080:80"
+    volumes:
+     - .:/usr/src/app
+
+
+  #node:
+    #container_name: node_sylius
+    #build: nodejs/
+    #image: node_sylius_3
+    #ports:
+    #- "9090:90"
+
+
+
+
+
