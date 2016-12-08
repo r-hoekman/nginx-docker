@@ -46,10 +46,11 @@ om in je container te komen kun je het volgende typen
 	- In je /etc/nginx/conf.d/default.conf (daar ergens) check of je de juist socket hebt  
 	fastcgi_pass unix:/run/php/php7.0-fpm.sock;	
 	geldt ook voor de php fpm config (google it)
-	https://www.nginx.com/resources/wiki/start/topics/recipes/symfony/ 		     
+	https://www.nginx.com/resources/wiki/start/topics/recipes/symfony/ 
+	- /etc/nginx/nginx.conf check of de user www-data is
 	- service nginx reload  
   	- service php7.0-fpm restart 
-	- Krijg je nog foutmeldingen (permission denied) zorg dan de gebruiker in de config klopt dat zou www-data moeten 	  zijn en die heeft ook de permissie nodig voor de project mappen
+	- Krijg je nog foutmeldingen (permission denied) zorg dan de gebruiker in de config klopt dat zou www-data moeten 	  zijn en die heeft ook de permissie nodig voor de project mappen.
         om dit te bekijken en veranderen gebruik je ls -ld in de map van het project daar moet user www data staan en group         www data staat het er niet,
 	chown -R gebruiker:groep map 
 - als het goed is zou nu alles moeten werken zo niet check of alle mappen zijn overgedragen naar de andere user.. zie hierboven.
