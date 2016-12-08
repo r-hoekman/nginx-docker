@@ -14,7 +14,7 @@ services:
     ports:
      - "8080:80"
     volumes:
-     - .:/usr/src/app
+     - .:/usr/share/nginx/html/
 
 
   #node:

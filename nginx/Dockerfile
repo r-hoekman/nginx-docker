@@ -28,17 +28,15 @@ php7.0-mbstring \
 php7.0-dom \
 php7.0-cli \
 php7.0-pgsql \
+php7.0-fpm \
 nodejs \
 nodejs-legacy \
 
 build-essential \
 npm
 
-
 RUN curl -sS http://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
-
-
 
 #RUN composer create-project -s alpha sylius/sylius-standard panelprint
 #RUN cd panelprint
