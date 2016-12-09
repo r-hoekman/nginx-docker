@@ -10,6 +10,7 @@ curl \
 nano \
 zip \
 unzip \
+net-tools \
 wget
 
 
@@ -35,15 +36,25 @@ nodejs-legacy \
 build-essential \
 npm
 
+
+
 RUN curl -sS http://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
+
+#RUN cd /usr/share/nginx/html
 #RUN composer create-project -s alpha sylius/sylius-standard panelprint
 #RUN cd panelprint
-#RUN php app/console sylius:install
+
 #RUN npm install
 #RUN npm run gulp
-#RUN gulp
+COPY conf.d/default.conf /etc/nginx/conf.d/
+COPY nginx-config/nginx.conf /etc/nginx/
+COPY php-config/php.ini /etc/php/7.0/cli/
+COPY ../Sylius/app/config/parameters.yaml /usr/share/nginx/html/Sylius/app/config/
+RUN php bin/console sylius:install
 
+RUN service nginx reload
+RUN service php7.0-fpm restart
 
 EXPOSE 80
